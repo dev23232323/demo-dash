@@ -4,9 +4,6 @@ import UtilFocusTrap from "../ui-utils/utils-focus-trap";
 import {
   ModalContent,
   ModalWrapper,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "@/styled-components/styled-UI/styled-modal";
 
 export interface ModalProps {
@@ -15,7 +12,7 @@ export interface ModalProps {
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
+export const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
   const modalRef = React.useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -58,8 +55,3 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
     </UtilPortal>
   );
 };
-
-export default Modal;
-
-// Exporting other styled component
-export { ModalHeader, ModalBody, ModalFooter };

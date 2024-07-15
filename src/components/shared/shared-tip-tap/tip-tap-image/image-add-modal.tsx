@@ -5,7 +5,7 @@ import Modal, {
   ModalFooter,
   ModalHeader,
   ModalProps,
-} from "@/components/UI/ui-modal/modal";
+} from "@/components/UI/ui-modal";
 import TextField from "@/components/UI/ui-text-field";
 import { FC, useEffect, useRef, useState } from "react";
 import {
