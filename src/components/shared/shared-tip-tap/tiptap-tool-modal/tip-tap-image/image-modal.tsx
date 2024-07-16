@@ -4,7 +4,7 @@ import Modal, {
   ModalBody,
   ModalFooter,
   ModalHeader,
-} from "@/components/UI/ui-modal/modal";
+} from "@/components/UI/ui-modal";
 import { StyledFlexWrapper } from "@/styled-components/styled-global";
 import { FC, useState } from "react";
 import ImageAddModal from "./image-add-modal";

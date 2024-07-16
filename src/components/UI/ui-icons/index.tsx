@@ -32,8 +32,10 @@ import Chevron_Left from "./icons-svg/chevron-left";
 import { Download } from "./icons-svg/download";
 import { Search } from "./icons-svg/search";
 import { ImagesPlus } from "./icons-svg/images-plus";
+import { VideoIcon } from "./icons-svg/video";
 
 export {
+  VideoIcon,
   Search,
   Download,
   Chevron_Left,

@@ -1,4 +1,4 @@
-// Note: This code is not written by me it is an online solution for the image in the editor to be resizable
+// Note: This code is responsible for making the image resizable
 //* Don't change anything unless you know what you are doing
 
 import {
@@ -34,7 +34,11 @@ const useEvent = <T extends (...args: any[]) => any>(handler: T): T => {
 const MIN_WIDTH = 60;
 const BORDER_COLOR = "#0096fd";
 
-const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
+const ResizableImageTemplate = ({
+  node,
+  updateAttributes,
+  deleteNode,
+}: NodeViewProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [editing, setEditing] = useState(false);
@@ -155,6 +159,24 @@ const ResizableImageTemplate = ({ node, updateAttributes }: NodeViewProps) => {
           {dragCornerButton("ne")}
           {dragCornerButton("sw")}
           {dragCornerButton("se")}
+
+          <button
+            onClick={() => deleteNode()}
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              backgroundColor: "red",
+              color: "white",
+              border: "none",
+              borderRadius: "50%",
+              width: "20px",
+              height: "20px",
+              cursor: "pointer",
+            }}
+          >
+            &times;
+          </button>
         </>
       )}
     </NodeViewWrapper>

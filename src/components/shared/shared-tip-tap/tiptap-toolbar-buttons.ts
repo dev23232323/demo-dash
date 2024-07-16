@@ -13,13 +13,11 @@ import {
   ListOrdered,
   Quote,
   StrikeThrough,
-  Link,
-  UnLink,
 } from "@/components/UI/ui-icons";
 import type { Editor } from "@tiptap/react";
-import { FC, useState } from "react";
+import { FC } from "react";
 
-interface _toolbarButtonsType {
+interface ToolbarButtonsType {
   function: () => any;
   arialLabel: string;
   icon: FC<IconProps>;
@@ -27,44 +25,13 @@ interface _toolbarButtonsType {
   isActive: () => boolean;
 }
 
-interface _toolbarButtonsProps {
+interface ToolbarButtonsProps {
   editor: Editor;
 }
 
-export const _toolbarButtons = ({
+export const ToolbarButtons = ({
   editor,
-}: _toolbarButtonsProps): _toolbarButtonsType[] => {
-  const [linkArialLabel, setLinkArialLabel] = useState("link");
-
-  const listToolObject: _toolbarButtonsType = {
-    arialLabel: linkArialLabel,
-    function: getLinkPrompt,
-    icon: editor.isActive("link") ? UnLink : Link,
-    isActive: () => editor.isActive("link"),
-    name: "link",
-  };
-
-  function getLinkPrompt() {
-    const previousUrl = editor.getAttributes("link").href;
-
-    if (previousUrl) {
-      editor.chain().extendMarkRange("link").unsetLink().focus().run();
-      return;
-    }
-
-    const link = window.prompt("LINK:");
-    if (link && link != "") {
-      setLinkArialLabel(link);
-      editor.chain().extendMarkRange("link").setLink({ href: link }).run();
-    }
-
-    if (document) {
-      document.querySelectorAll(".tiptap a").forEach((link) => {
-        link.setAttribute("title", link.getAttribute("href")!);
-      });
-    }
-  }
-
+}: ToolbarButtonsProps): ToolbarButtonsType[] => {
   function toggleTextAlign(
     editor: Editor,
     alignment: "left" | "right" | "center" | "justify"
@@ -167,9 +134,6 @@ export const _toolbarButtons = ({
       icon: AlignRight,
       arialLabel: "Align-Right",
       isActive: () => editor.isActive({ textAlign: "right" }),
-    },
-    {
-      ...listToolObject,
     },
   ];
 };

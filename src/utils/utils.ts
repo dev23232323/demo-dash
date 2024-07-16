@@ -36,11 +36,17 @@ export function stripHtmlTags(input: string): string {
 }
 
 export function stripEmptyHtmlTags(input: string): string {
-  // Define the regular expression pattern to match any element with no content
-  const regex = /<(\w+)(?:\s+[^>]*)?><\/\1>/g;
+  // Define the regular expression pattern to match any element with no content, excluding iframe
+  const regex = /<(?!iframe\b)(\w+)(?:\s+[^>]*)?><\/\1>/g;
   // Replace occurrences of <element></element> with an empty string
   return input.replace(regex, "").trim();
   // Pass the filtered content to the onChange function
+}
+
+export function isValidUrl(input: string): boolean {
+  const regex =
+    /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
+  return regex.test(input);
 }
 
 export function getBase64Image(file: File): Promise<string> {

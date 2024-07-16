@@ -9,7 +9,9 @@ import Link from "@tiptap/extension-link";
 import { StyledEditorContent } from "@/styled-components/styled-shared/styled-tip-tap/styled-tiptap-editor";
 import { stripEmptyHtmlTags } from "@/utils/utils";
 import { Typography as StyledTypography } from "@/styled-components/styled-global";
-import ResizableImageExtension from "./tip-tap-image/tiptap-image-extension";
+import ResizableImageExtension from "./tiptap-extension/resizable-image-extension";
+import ResizableYoutubeExtension from "./tiptap-extension/resizable-youtube-extension";
+import Youtube from "@tiptap/extension-youtube";
 
 interface TipTapProps {
   value?: string;
@@ -31,6 +33,7 @@ const TipTap: FC<TipTapProps> = forwardRef(
           types: ["heading", "paragraph"],
         }),
         ResizableImageExtension,
+        ResizableYoutubeExtension,
       ],
       []
     );
