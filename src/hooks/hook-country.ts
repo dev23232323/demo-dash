@@ -4,6 +4,7 @@ import axiosInstance from "@/utils/utils";
 import { useEffect, useState } from "react";
 import { AxiosErrorResponse } from "@/@types/type-api/common.types";
 import Swal from "sweetalert2";
+import { Country } from "@/@types/backend/work.types";
 
 const fetchCountries = async () => {
   const { data } = await axiosInstance.get("/work/country/get-dropdown");

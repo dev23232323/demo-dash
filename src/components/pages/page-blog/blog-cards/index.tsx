@@ -1,27 +1,18 @@
 "use client";
 import { FC } from "react";
-import { BlogCard } from "./blog-card";
-import { StyledBlogCardGrid } from "@/styled-components/styled-pages/styled-blog/styled-blog-card";
-import { useEffect, useRef } from "react";
+import { StyledCardGrid } from "@/styled-components/styled-global";
 import { useQuery } from "react-query";
 import axiosInstance from "@/utils/utils";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ResponseBlogPagination } from "@/@types/backend/blog.type";
 import Pagination from "@/components/shared/shared-pagination";
 import { Typography } from "@/styled-components/styled-global";
+import { SharedCard } from "@/components/shared/shared-card";
+import { usePage } from "@/hooks/hook-page";
 
 interface BlogCardProps {}
 const BlogCards: FC<BlogCardProps> = ({}) => {
-  const { replace } = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const params = new URLSearchParams(searchParams);
-  const searchInputRef = useRef<HTMLInputElement | null>(null);
-
-  const page = Number(searchParams.get("page")) || 1;
-  const pageSize = Number(searchParams.get("size")) || 10;
-  const filter = searchParams.get("filter") || "";
-  const search = searchParams.get("search") || "";
+  const { filter, jumpToPage, onPaginationClicked, page, pageSize, search } =
+    usePage({});
 
   const fetchBlogs = async (page: number, pageSize: number) => {
     const response = await axiosInstance.get<ResponseBlogPagination>(
@@ -30,7 +21,7 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
     return response.data;
   };
 
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError, refetch } = useQuery(
     ["blogs", page, pageSize, filter, search],
     () => fetchBlogs(page, pageSize),
     {
@@ -38,12 +29,6 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
       cacheTime: Infinity, // Cache the data infinitely
     }
   );
-
-  useEffect(() => {
-    if (search != "" && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [search]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
@@ -56,33 +41,19 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
       </Typography>
     );
 
-  function onPaginationClicked(button: "next" | "previous") {
-    if (button === "previous") {
-      params.set("page", String(page - 1));
-    } else {
-      params.set("page", String(page + 1));
-    }
-    replace(`${pathname}?${params.toString()}`);
-  }
-
-  const jumpToPage = (page: number | "first" | "last") => {
-    if (page === "first") {
-      params.set("page", "1");
-    } else if (page === "last") {
-      params.set("page", String(data.totalPages));
-    } else {
-      params.set("page", String(page));
-    }
-    replace(`${pathname}?${params.toString()}`);
-  };
-
   return (
     <>
-      <StyledBlogCardGrid>
+      <StyledCardGrid>
         {data.content.map((blog, i) => (
-          <BlogCard key={String(i) + blog.slug} {...blog} />
+          <SharedCard
+            key={String(i) + blog.slug}
+            {...blog}
+            deleteUrl="Todo: add delete url"
+            refetch={refetch}
+            imageAlt={blog.shortDesc}
+          />
         ))}
-      </StyledBlogCardGrid>
+      </StyledCardGrid>
       <Pagination
         jumpToPage={jumpToPage}
         onButtonClick={onPaginationClicked}
