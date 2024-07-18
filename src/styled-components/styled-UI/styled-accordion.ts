@@ -6,7 +6,7 @@ interface BaseAccordionProp {
   $isOpen: boolean;
 }
 
-export const StyledUserListItem = styled.div<BaseAccordionProp>`
+export const StyledAccordion = styled.div<BaseAccordionProp>`
   padding: 10px 15px;
   border-radius: ${(props) => props.theme.style.borderRadius};
   background-color: ${(props) => props.theme.colors.primary[900]};

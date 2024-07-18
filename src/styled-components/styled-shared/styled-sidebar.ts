@@ -11,7 +11,7 @@ export const SideBarWrapper = styled.aside<SideBarWrapperProps>`
   padding: 40px 35px;
   background-color: ${(props) => props.theme.colors.primary[600]};
   min-height: 100%;
-  min-width: 200px;
+  min-width: 210px;
 
   display: flex;
   flex-direction: column;

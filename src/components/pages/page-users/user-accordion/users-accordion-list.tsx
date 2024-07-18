@@ -9,7 +9,7 @@ import {
   StyledUsersAccordionListWrapper,
 } from "@/styled-components/styled-pages/styled-user/styled-users-list";
 
-import { AccordionItem } from "@/components/UI/shared-accordion-item";
+import { Accordion } from "@/components/UI/ui-accordion";
 import { UserAccordionDetails } from "./user-accordion-details";
 import { Typography } from "@/styled-components/styled-global";
 import { PartialUser } from "@/@types/backend/user.type";
@@ -26,7 +26,7 @@ export const UsersAccordionList: FC<UsersAccordionListProps> = ({ users }) => {
       {users.map((user, i) => {
         const isOpen = isAccordionOpen === String(i);
         return (
-          <AccordionItem
+          <Accordion
             key={i}
             id={String(i)}
             setIsOpenAccordion={setIsAccordionOpen}

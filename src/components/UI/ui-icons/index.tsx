@@ -33,8 +33,12 @@ import { Download } from "./icons-svg/download";
 import { Search } from "./icons-svg/search";
 import { ImagesPlus } from "./icons-svg/images-plus";
 import { VideoIcon } from "./icons-svg/video";
+import { GlobeIcon } from "./icons-svg/globe";
+import { ChevronUpDown } from "./icons-svg/chevron-up-down";
 
 export {
+  ChevronUpDown,
+  GlobeIcon,
   VideoIcon,
   Search,
   Download,

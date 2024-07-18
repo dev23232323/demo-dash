@@ -3,7 +3,7 @@ import { FC, Suspense, useState } from "react";
 // Styled
 import { StyledJobAccordionListWrapper } from "@/styled-components/styled-pages/styled-job/styled-job-accordion";
 
-import { AccordionItem } from "@/components/UI/shared-accordion-item";
+import { Accordion } from "@/components/UI/ui-accordion";
 import JobAccordionDetail from "./job-accordion-detail";
 import { JobAccordionHeader } from "./job-accordion-header";
 import { Jobs } from "@/@types/backend/job.type";
@@ -21,7 +21,7 @@ export const JobAccordionList: FC<JobAccordionListProps> = ({ jobs }) => {
         const id = job.job.email + String(i);
         const isOpen = isAccordionOpen === id;
         return (
-          <AccordionItem
+          <Accordion
             key={id}
             id={id}
             setIsOpenAccordion={setIsAccordionOpen}

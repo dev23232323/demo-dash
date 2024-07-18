@@ -1,42 +1,46 @@
 import {
-  StyledUserListItem,
   StyledChevron_Right,
+  StyledAccordion,
 } from "@/styled-components/styled-UI/styled-accordion";
-import { memo } from "react";
+import React, { memo } from "react";
 import { Button } from "@/components/UI/ui-button";
 
-export interface AccordionItemProps<P = any, R = void> {
+export interface AccordionProps<P = any, R = void> {
   id: string;
   setIsOpenAccordion: (prop: P) => R;
   isOpenAccordion: boolean;
-  accordion_header: any;
-  accordion_content: any;
+  accordion_header: () => JSX.Element;
+  accordion_content: () => JSX.Element;
 }
 
-export const AccordionItem = memo(
+export const Accordion: React.FC<AccordionProps> = memo(
   ({
     id,
     isOpenAccordion,
     setIsOpenAccordion,
     accordion_content: AccordionContent,
     accordion_header: AccordionHeader,
-  }: AccordionItemProps) => {
+  }) => {
     function toggleAccordion() {
       setIsOpenAccordion(isOpenAccordion ? null : id);
     }
 
     return (
       <div>
-        <StyledUserListItem $isOpen={isOpenAccordion}>
+        <StyledAccordion $isOpen={isOpenAccordion}>
           {AccordionHeader && <AccordionHeader />}
           <Button onClick={toggleAccordion}>
             <StyledChevron_Right $isOpen={isOpenAccordion} />
           </Button>
-        </StyledUserListItem>
+        </StyledAccordion>
         {isOpenAccordion && <AccordionContent />}
       </div>
     );
-  }
+  },
+
+  // Memoize based on if open value changes to prevent unnecessary re-renders
+  (prevProps, nextProps) =>
+    prevProps.isOpenAccordion === nextProps.isOpenAccordion
 );
 
-AccordionItem.displayName = "AccordionItem";
+Accordion.displayName = "Accordion";
