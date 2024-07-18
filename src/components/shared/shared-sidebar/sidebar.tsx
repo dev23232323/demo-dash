@@ -78,7 +78,7 @@ export const Sidebar: FC<SidebarProps> = ({
                 <StyledSidebarLinks
                   icon={Icon}
                   iconAlign="start"
-                  isActive={link.path === path}
+                  isActive={link.path === pathname}
                 >
                   <span>{link.name}</span>
                 </StyledSidebarLinks>

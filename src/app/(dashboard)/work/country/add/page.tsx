@@ -1,4 +1,4 @@
-import AddCountryPage from "@/components/pages/page-country/country-add/country-add-page";
+import AddCountryPage from "@/components/pages/page-work/page-country/country-add/country-add-page";
 import { FC } from "react";
 
 interface PageProps {}

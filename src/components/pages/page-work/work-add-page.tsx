@@ -87,7 +87,7 @@ const WorkAddPage: FC<WorkAddPageProps> = ({}) => {
       <form onSubmit={handleSubmit(formSubmit)}>
         <StyledFlexWrapper $justifyContent="space-between" $responsive={false}>
           <StyledHeading>Add a new work</StyledHeading>
-          <Link href={"/country/add"}>
+          <Link href={"/work/country/add"}>
             <Button icon={Plus} size="sm" iconAlign="end">
               Country
             </Button>

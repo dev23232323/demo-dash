@@ -11,11 +11,14 @@ export const SideBarWrapper = styled.aside<SideBarWrapperProps>`
   padding: 40px 35px;
   background-color: ${(props) => props.theme.colors.primary[600]};
   min-height: 100%;
-  min-width: 210px;
+  min-width: 220px;
+
+  scrollbar-gutter: stable;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 20px;
 
   overflow-y: auto;
 
@@ -59,6 +62,7 @@ export const StyledSmallLogo = styled(LogoSmall)`
 `;
 
 export const StyledSidebarLinks = styled(Button)`
+  white-space: nowrap;
   display: flex;
   justify-content: start;
   width: 100%;

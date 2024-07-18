@@ -1,7 +1,8 @@
+import WorkPage from "@/components/pages/page-work/work-page";
 import React, { FC } from "react";
 
 interface PageProps {}
 const Page: FC<PageProps> = ({}) => {
-  return <div>Add new work</div>;
+  return <WorkPage />;
 };
 export default Page;

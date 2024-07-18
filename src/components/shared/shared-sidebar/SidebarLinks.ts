@@ -41,7 +41,7 @@ export const WorkLinks: SidebarLinksTypes[] = [
   },
   {
     name: "Country",
-    path: "/country",
+    path: "/work/country",
     icon: GlobeIcon,
   },
   {
@@ -51,7 +51,7 @@ export const WorkLinks: SidebarLinksTypes[] = [
   },
   {
     name: "Add Country",
-    path: "/country/add",
+    path: "/work/country/add",
     icon: Plus,
   },
 ];
