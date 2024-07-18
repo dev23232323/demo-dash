@@ -1,8 +1,6 @@
 "use client";
 import { FC } from "react";
-import { useRouter } from "next/navigation";
 import Button from "@/components/UI/ui-button";
-import { Chevron_Left } from "@/components/UI/ui-icons";
 import {
   StyledFlexWrapper,
   StyledHeading,
@@ -29,11 +27,12 @@ import axiosInstance from "@/utils/utils";
 import { AxiosError } from "axios";
 import { useMutation } from "react-query";
 import Swal from "sweetalert2";
+import Link from "next/link";
+import { Plus } from "@/components/UI/ui-icons";
 
 interface AddCountryPageProps {}
 
 const AddCountryPage: FC<AddCountryPageProps> = ({}) => {
-  const { back } = useRouter();
   const { mutate, isLoading } = useMutation<
     any,
     AxiosError<AxiosErrorResponse>,
@@ -92,11 +91,14 @@ const AddCountryPage: FC<AddCountryPageProps> = ({}) => {
 
   return (
     <section>
-      <Button icon={Chevron_Left} size="sm" onClick={back}>
-        Back
-      </Button>
-      <br />
-      <StyledHeading>Add a new country</StyledHeading>
+      <StyledFlexWrapper $justifyContent="space-between" $responsive={false}>
+        <StyledHeading>Add a new country</StyledHeading>
+        <Link href={"/work/add"}>
+          <Button size="sm" icon={Plus}>
+            Work
+          </Button>
+        </Link>
+      </StyledFlexWrapper>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <StyledFlexWrapper $alignItems="baseline">
           <TextField
