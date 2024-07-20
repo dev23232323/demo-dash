@@ -10,6 +10,7 @@ import {
   StyledFlexWrapper,
   Typography,
 } from "@/styled-components/styled-global";
+import SharedCountryBanner from "@/components/shared/shared-country-banner";
 
 interface CountryPageProps {}
 const CountryPage: FC<CountryPageProps> = () => {
@@ -23,7 +24,7 @@ const CountryPage: FC<CountryPageProps> = () => {
     return response.data;
   };
 
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError, refetch } = useQuery(
     ["counties", page, pageSize, filter, search],
     () => fetchBlogs(page, pageSize),
     {
@@ -45,7 +46,13 @@ const CountryPage: FC<CountryPageProps> = () => {
         Total Countries: {data.totalResult}
       </StyledFlexWrapper>
       {data.content.map((country) => (
-        <FBB_BannerPreview {...country} key={country.countryCode} />
+        <SharedCountryBanner
+          {...country}
+          key={country.countryCode}
+          deleteUrl={`/work/country/delete?id=${country.id}`}
+          updateUrl="ssss"
+          refetch={refetch}
+        />
       ))}
       <Pagination
         jumpToPage={jumpToPage}

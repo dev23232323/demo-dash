@@ -7,7 +7,6 @@ import Card, {
   CardTypography,
 } from "@/components/UI/ui-card";
 import { FC } from "react";
-
 import type {
   QueryObserverResult,
   RefetchOptions,
@@ -15,6 +14,8 @@ import type {
 } from "react-query";
 import { StyledFlexWrapper } from "@/styled-components/styled-global";
 import Link from "next/link";
+import axiosInstance from "@/utils/utils";
+import Swal from "sweetalert2";
 
 interface SharedCardProps {
   id: string;
@@ -39,11 +40,27 @@ export const SharedCard: FC<SharedCardProps> = ({
   id,
   updateUrl,
 }) => {
-  function handleDelete() {
-    console.log("refetch......");
+  const handleDelete = async () => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+      });
 
-    refetch();
-  }
+      if (result.isConfirmed) {
+        await axiosInstance.delete(deleteUrl);
+        await Swal.fire("Deleted!", "Your item has been deleted.", "success");
+        refetch();
+      }
+    } catch (error) {
+      Swal.fire("Error!", "There was an error deleting your item.", "error");
+    }
+  };
 
   return (
     <Card imageUrl={imageUrl} imageAlt={imageAlt}>

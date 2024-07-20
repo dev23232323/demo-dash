@@ -7,7 +7,7 @@ const Page: FC<PageProps> = ({}) => {
   return (
     <>
       <WorkPageHeader />
-      <WorkPage />;
+      <WorkPage />
     </>
   );
 };

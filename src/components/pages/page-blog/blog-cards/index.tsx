@@ -50,7 +50,7 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
             {...blog}
             refetch={refetch}
             imageAlt={blog.shortDesc}
-            deleteUrl="Todo: add delete url"
+            deleteUrl={`/blog/delete?id=${blog.id}`}
             updateUrl="Todo: add update url"
           />
         ))}

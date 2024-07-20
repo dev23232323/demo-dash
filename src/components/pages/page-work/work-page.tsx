@@ -88,7 +88,7 @@ const WorkPage: FC<WorkPageProps> = ({}) => {
                   {...work}
                   refetch={refetch}
                   imageAlt={work.shortDesc}
-                  deleteUrl="Todo: add delete url"
+                  deleteUrl={`/work/delete?id=${work.id}`}
                   updateUrl="Todo: add update url"
                 />
               ))}

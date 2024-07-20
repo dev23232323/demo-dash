@@ -6,6 +6,8 @@
 */
 
 "use client";
+import Button from "@/components/UI/ui-button";
+import { PencilLine, Trash } from "@/components/UI/ui-icons";
 import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -69,7 +71,16 @@ const FBB_BannerFlexWrapper = styled.div`
   width: fit-content;
 `;
 
-interface FBB_BannerPreviewProps {
+const FBB_Toolbar = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: flex;
+  gap: 5px;
+`;
+
+export interface FBB_BannerPreviewProps {
   title: string;
   description: string;
   background?: FileList;
