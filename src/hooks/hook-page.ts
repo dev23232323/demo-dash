@@ -8,18 +8,18 @@ import { useDebounce } from "./hook-debounce";
 interface usePageProps {}
 
 export const usePage = ({}: usePageProps) => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-
   const { replace } = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
-  const debouncedSearchTerm = useDebounce(searchTerm || "", 500);
-
   const page = Number(searchParams.get("page")) || 1;
+
   const pageSize = Number(searchParams.get("size")) || 10;
   const filter = searchParams.get("filter") || "";
   const search = searchParams.get("search") || "";
+
+  const [searchTerm, setSearchTerm] = useState<string>(search);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   function handleFilterChange(e: ChangeEvent<HTMLSelectElement>) {
     e.preventDefault();
@@ -30,13 +30,15 @@ export const usePage = ({}: usePageProps) => {
 
   useEffect(() => {
     function debounce() {
-      params.set("search", debouncedSearchTerm);
-      params.set("page", "1");
-      replace(`${pathname}?${params.toString()}`);
+      if (search != debouncedSearchTerm) {
+        params.set("search", debouncedSearchTerm);
+        params.set("page", "1");
+        replace(`${pathname}?${params.toString()}`);
+      }
     }
     debounce();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchTerm, replace, pathname]);
+  }, [debouncedSearchTerm]);
 
   function onPaginationClicked(button: "next" | "previous") {
     if (button === "previous") {

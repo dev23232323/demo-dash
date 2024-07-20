@@ -57,6 +57,7 @@ interface TypographyProps {
   $color?: "white" | "black" | "primary" | "danger" | "success";
   $size?: "md" | "sm" | "lg";
   $textAlign?: "left" | "center" | "right" | "justify";
+  $margin?: string | MarginProps;
 }
 
 // Explicitly type the styled component
@@ -125,6 +126,25 @@ export const Typography = styled.p<TypographyProps>`
       `;
     }
   }}
+
+  margin: ${(props) =>
+    typeof props.$margin === "string" ? props.$margin : "0"};
+  margin-left: ${(props) =>
+    getMarginValue(props, "$marginLeft") ||
+    getMarginValue(props, "$marginX") ||
+    (typeof props.$margin === "string" ? props.$margin : "0")};
+  margin-right: ${(props) =>
+    getMarginValue(props, "$marginRight") ||
+    getMarginValue(props, "$marginX") ||
+    (typeof props.$margin === "string" ? props.$margin : "0")};
+  margin-top: ${(props) =>
+    getMarginValue(props, "$marginTop") ||
+    getMarginValue(props, "$marginY") ||
+    (typeof props.$margin === "string" ? props.$margin : "0")};
+  margin-bottom: ${(props) =>
+    getMarginValue(props, "$marginBottom") ||
+    getMarginValue(props, "$marginY") ||
+    (typeof props.$margin === "string" ? props.$margin : "0")};
 
   ${({ $textAlign }) =>
     $textAlign &&
@@ -210,4 +230,26 @@ export const StyledFlexWrapper = styled.div<FlexWrapperProps>`
         flex-direction: column;
       }
     `}
+`;
+
+export const StyledCardGrid = styled.section`
+  display: grid;
+  grid-gap: 20px;
+
+  place-items: center;
+  grid-template-columns: 1fr;
+
+  ${({ theme }) => `
+    @media (min-width: ${theme.sizes.md}) {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+    }
+
+    @media (min-width: ${theme.sizes.lg}) {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */
+    }
+
+    @media (min-width: ${theme.sizes["2xl"]}) {
+      grid-template-columns: repeat(4, 1fr); /* 4 columns for extra large screens */
+    }
+  `}
 `;

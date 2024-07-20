@@ -1,6 +1,5 @@
 "use client";
-import Select, { SelectWrapper } from "@/components/UI/ui-select";
-import TextField from "@/components/UI/ui-text-field";
+import Select from "@/components/UI/ui-select";
 import styled from "styled-components";
 
 export const StyledBlogHeaderWrapper = styled.section`
@@ -17,9 +16,5 @@ export const StyledBlogHeaderHeading = styled.h1`
 
 export const StyledBlogSelect = styled(Select)`
   width: fit-content;
-  margin: 0;
-`;
-
-export const StyledBlogTextField = styled(TextField)`
   margin: 0;
 `;

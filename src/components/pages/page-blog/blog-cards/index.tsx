@@ -48,9 +48,10 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
           <SharedCard
             key={String(i) + blog.slug}
             {...blog}
-            deleteUrl="Todo: add delete url"
             refetch={refetch}
             imageAlt={blog.shortDesc}
+            deleteUrl="Todo: add delete url"
+            updateUrl="Todo: add update url"
           />
         ))}
       </StyledCardGrid>

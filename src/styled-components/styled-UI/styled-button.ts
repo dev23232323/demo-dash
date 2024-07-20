@@ -82,6 +82,26 @@ export const StyledButton = styled.button<StyledButton>`
       color: ${(props) => props.theme.colors.primary[900]};
       outline: 2px solid ${(props) => props.theme.colors.primary[900]};
     `}
+
+  ${({ $buttonVariant }) =>
+    $buttonVariant === "danger" &&
+    css`
+      background-color: ${(props) => props.theme.colors.danger};
+      &:hover {
+        background-color: ${(props) => props.theme.colors.danger};
+        outline: 2px solid ${(props) => props.theme.colors.danger};
+      }
+    `}
+
+  ${({ $buttonVariant }) =>
+    $buttonVariant === "success" &&
+    css`
+      background-color: ${(props) => props.theme.colors.success};
+      &:hover {
+        background-color: ${(props) => props.theme.colors.success};
+        outline: 2px solid ${(props) => props.theme.colors.success};
+      }
+    `}
 `;
 
 export const StyledAnimationRotating = styled(LoaderCircle)`

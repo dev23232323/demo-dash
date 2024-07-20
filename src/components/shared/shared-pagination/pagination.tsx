@@ -11,7 +11,7 @@ import { theme } from "@/styled-components/styled-theme";
 interface PaginationProps<T = any> extends PaginationType<T> {
   align?: "left" | "right";
   onButtonClick: (button: "next" | "previous") => void;
-  jumpToPage: (page: number | "first" | "last") => void;
+  jumpToPage: (page: number) => void;
 }
 
 export const Pagination: FC<PaginationProps> = ({

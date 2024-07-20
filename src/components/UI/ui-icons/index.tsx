@@ -35,8 +35,10 @@ import { ImagesPlus } from "./icons-svg/images-plus";
 import { VideoIcon } from "./icons-svg/video";
 import { GlobeIcon } from "./icons-svg/globe";
 import { ChevronUpDown } from "./icons-svg/chevron-up-down";
+import { Trash } from "./icons-svg/trash";
 
 export {
+  Trash,
   ChevronUpDown,
   GlobeIcon,
   VideoIcon,
