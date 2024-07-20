@@ -13,8 +13,11 @@ import {
 import Link from "next/link";
 import { FC } from "react";
 
-interface BlogHeaderProps {}
-export const BlogHeader: FC<BlogHeaderProps> = ({}) => {
+interface BlogHeaderProps {
+  totalBlogs: number;
+}
+
+export const BlogHeader: FC<BlogHeaderProps> = ({ totalBlogs }) => {
   const { filter, handleFilterChange, setSearchTerm, searchTerm } = usePage({});
 
   return (
@@ -33,7 +36,14 @@ export const BlogHeader: FC<BlogHeaderProps> = ({}) => {
         />
       </StyledFlexWrapper>
       <StyledBlogHeaderWrapper>
-        <StyledBlogHeaderHeading>Blogs</StyledBlogHeaderHeading>
+        <StyledFlexWrapper
+          $flexDirection="column"
+          $responsive={false}
+          $alignItems="start"
+        >
+          <StyledBlogHeaderHeading>Blogs</StyledBlogHeaderHeading>
+          Total Blogs: {totalBlogs}
+        </StyledFlexWrapper>
         <Link href={"/blog/addBlog"}>
           <Button icon={Plus} iconAlign="end">
             Add Blog

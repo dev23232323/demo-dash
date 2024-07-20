@@ -8,6 +8,7 @@ import Pagination from "@/components/shared/shared-pagination";
 import { Typography } from "@/styled-components/styled-global";
 import { SharedCard } from "@/components/shared/shared-card";
 import { usePage } from "@/hooks/hook-page";
+import BlogHeader from "../blog-header";
 
 interface BlogCardProps {}
 const BlogCards: FC<BlogCardProps> = ({}) => {
@@ -43,6 +44,8 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
 
   return (
     <>
+      <BlogHeader totalBlogs={data.totalResult} />
+
       <StyledCardGrid>
         {data.content.map((blog, i) => (
           <SharedCard
