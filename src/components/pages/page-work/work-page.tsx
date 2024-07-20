@@ -57,6 +57,13 @@ const WorkPage: FC<WorkPageProps> = ({}) => {
     <section>
       <WorkPageHeader />
 
+      <StyledFlexWrapper $justifyContent="space-between" $responsive={false}>
+        <Typography $isBold $size="lg">
+          All works
+        </Typography>
+        Total works: {data.totalResult}
+      </StyledFlexWrapper>
+
       {data?.content.length <= 0 ? (
         <Typography $textAlign="center" $size="lg" $isBold $color="primary">
           No work found!

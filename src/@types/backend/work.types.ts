@@ -5,6 +5,18 @@ export interface Country {
   name: string;
 }
 
+export interface PartialCountry {
+  id: string;
+  name: string;
+  countryCode: string;
+  title: string;
+  description: string;
+  bannerImageUrl: string;
+  bannerImageName: string;
+  overlayImageUrl: string;
+  overlayImageName: string;
+}
+
 export interface PartialWork {
   id: string;
   title: string;
@@ -24,3 +36,4 @@ export interface CountryWork {
 }
 
 export type ResponseWorkPagination = PaginationType<PartialWork[]>;
+export type ResponseCountryPagination = PaginationType<PartialCountry[]>;

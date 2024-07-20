@@ -9,13 +9,6 @@
 import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 
-interface FBB_BannerPreviewProps {
-  title: string;
-  description: string;
-  background?: FileList;
-  foreground?: FileList;
-}
-
 interface FBB_BannerSectionProps {
   $backgroundImage: string;
 }
@@ -76,11 +69,22 @@ const FBB_BannerFlexWrapper = styled.div`
   width: fit-content;
 `;
 
+interface FBB_BannerPreviewProps {
+  title: string;
+  description: string;
+  background?: FileList;
+  foreground?: FileList;
+  bannerImageUrl?: string;
+  overlayImageUrl?: string;
+}
+
 export const FBB_BannerPreview: FC<FBB_BannerPreviewProps> = ({
   background,
   description,
   foreground,
   title,
+  bannerImageUrl,
+  overlayImageUrl,
 }) => {
   function getBase64Image(fileList: FileList): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -109,8 +113,8 @@ export const FBB_BannerPreview: FC<FBB_BannerPreviewProps> = ({
     background: string;
     foreground: string;
   }>({
-    background: "",
-    foreground: "",
+    background: bannerImageUrl || "",
+    foreground: overlayImageUrl || "",
   });
 
   useEffect(() => {
