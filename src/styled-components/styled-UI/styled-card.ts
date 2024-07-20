@@ -38,8 +38,9 @@ export const StyledCardImage = styled.img`
   object-fit: cover;
   object-position: center;
   flex: 1;
+  aspect-ratio: 1;
 
-  max-height: 10rem;
+  max-height: 12rem;
 
   box-sizing: border-box;
 `;

@@ -11,7 +11,6 @@ import { stripEmptyHtmlTags } from "@/utils/utils";
 import { Typography as StyledTypography } from "@/styled-components/styled-global";
 import ResizableImageExtension from "./tiptap-extension/resizable-image-extension";
 import ResizableYoutubeExtension from "./tiptap-extension/resizable-youtube-extension";
-import Youtube from "@tiptap/extension-youtube";
 
 interface TipTapProps {
   value?: string;
@@ -47,25 +46,28 @@ const TipTap: FC<TipTapProps> = forwardRef(
       []
     );
 
-    const editor = useEditor({
-      extensions,
-      editorProps,
-      content: value,
-      onUpdate({ editor }) {
-        const htmlContent = editor.getHTML().trim();
-        const filteredHtml = stripEmptyHtmlTags(htmlContent);
-        if (onChange) {
-          onChange(filteredHtml);
-        }
+    const editor = useEditor(
+      {
+        extensions,
+        editorProps,
+        content: value,
+        onUpdate({ editor }) {
+          const htmlContent = editor.getHTML().trim();
+          const filteredHtml = stripEmptyHtmlTags(htmlContent);
+          if (onChange) {
+            onChange(filteredHtml);
+          }
+        },
+        onBlur({ event, ...rest }) {
+          console.log(event, rest);
+          if (onBlur) {
+            onBlur(event);
+          }
+        },
+        autofocus: "all",
       },
-      onBlur({ event, ...rest }) {
-        console.log(event, rest);
-        if (onBlur) {
-          onBlur(event);
-        }
-      },
-      autofocus: "all",
-    });
+      [value]
+    );
 
     useImperativeHandle(
       ref,
@@ -82,7 +84,7 @@ const TipTap: FC<TipTapProps> = forwardRef(
     return (
       <div>
         <TipTapToolbar editor={editor} />
-        <StyledEditorContent editor={editor} />
+        <StyledEditorContent editor={editor} defaultValue={value} />
         <StyledTypography
           $color="danger"
           $size="sm"

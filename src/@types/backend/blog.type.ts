@@ -11,4 +11,16 @@ export interface PartialBlog {
   title: string;
 }
 
+export interface Blog {
+  id: string;
+  slug: string;
+  title: string;
+  html: string;
+  createdAt: string;
+  updatedAt: string;
+  imageUrl: string;
+  imageName: string;
+  shortDesc: string;
+}
+
 export type ResponseBlogPagination = PaginationType<PartialBlog[]>;

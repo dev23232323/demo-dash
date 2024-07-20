@@ -78,11 +78,11 @@ export const SharedCard: FC<SharedCardProps> = ({
           >
             Delete
           </Button>
-          <Link href={updateUrl}>
+          <a href={updateUrl}>
             <Button icon={PencilLine} iconAlign="end">
               Update
             </Button>
-          </Link>
+          </a>
         </StyledFlexWrapper>
       </CardFooter>
     </Card>

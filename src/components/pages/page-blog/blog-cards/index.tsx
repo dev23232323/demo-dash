@@ -54,7 +54,7 @@ const BlogCards: FC<BlogCardProps> = ({}) => {
             refetch={refetch}
             imageAlt={blog.shortDesc}
             deleteUrl={`/blog/delete?id=${blog.id}`}
-            updateUrl="Todo: add update url"
+            updateUrl={`/blog/update?id=${blog.id}`}
           />
         ))}
       </StyledCardGrid>
