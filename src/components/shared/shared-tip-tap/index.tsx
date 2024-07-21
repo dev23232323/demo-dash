@@ -1,5 +1,5 @@
 "use client";
-import { FC, useMemo, forwardRef, useImperativeHandle } from "react";
+import { FC, useMemo, forwardRef, useImperativeHandle, useEffect } from "react";
 import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
 import { useEditor } from "@tiptap/react";
@@ -76,6 +76,15 @@ const TipTap: FC<TipTapProps> = forwardRef(
       }),
       [editor]
     );
+
+    console.log(value);
+
+    useEffect(() => {
+      if (editor?.isEmpty && value !== "<p></p>") {
+        editor.commands.setContent(value);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value]);
 
     if (!editor) {
       return null;

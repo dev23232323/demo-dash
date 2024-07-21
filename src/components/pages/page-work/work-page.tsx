@@ -89,7 +89,7 @@ const WorkPage: FC<WorkPageProps> = ({}) => {
                   refetch={refetch}
                   imageAlt={work.shortDesc}
                   deleteUrl={`/work/delete?id=${work.id}`}
-                  updateUrl="Todo: add update url"
+                  updateUrl={`/work/update?id=${work.id}`}
                 />
               ))}
             </StyledCardGrid>

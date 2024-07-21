@@ -35,5 +35,18 @@ export interface CountryWork {
   [key: string]: PartialWork[];
 }
 
+export interface Work {
+  id: string;
+  title: string;
+  html: string;
+  slug: string;
+  countryId: string;
+  createdAt: string;
+  updatedAt: string;
+  imageUrl: string;
+  imageName: string;
+  shortDesc: string;
+}
+
 export type ResponseWorkPagination = PaginationType<PartialWork[]>;
 export type ResponseCountryPagination = PaginationType<PartialCountry[]>;
