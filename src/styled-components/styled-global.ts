@@ -253,3 +253,9 @@ export const StyledCardGrid = styled.section`
     }
   `}
 `;
+
+export const StyledSeparator = styled.div`
+  height: 1px;
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.black};
+`;

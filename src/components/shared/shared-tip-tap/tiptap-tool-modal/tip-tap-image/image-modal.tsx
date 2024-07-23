@@ -1,5 +1,5 @@
 import Button from "@/components/UI/ui-button";
-import { ImagesPlus } from "@/components/UI/ui-icons";
+import { ImagesPlus, Link } from "@/components/UI/ui-icons";
 import Modal, {
   ModalBody,
   ModalFooter,
@@ -10,6 +10,7 @@ import { FC, useState } from "react";
 import ImageAddModal from "./image-add-modal";
 import TiptapImageGrid from "./tiptap-image-grid";
 import { Editor } from "@tiptap/react";
+import ImageLinkModal from "./image-link-modal";
 
 interface ImageModalProps {
   editor: Editor;
@@ -17,18 +18,20 @@ interface ImageModalProps {
 
 export const ImageModal: FC<ImageModalProps> = ({ editor }) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [childModalOpen, setChildModalOpen] = useState<boolean>(false);
+  const [childModalOpen, setChildModalOpen] = useState<
+    "upload" | "url" | false
+  >(false);
 
-  function handleOpenModal(type: "modal" | "child") {
+  function handleOpenModal(type: "modal" | typeof childModalOpen) {
     if (type === "modal") {
       setModalOpen(true);
     } else {
       setModalOpen(false);
-      setChildModalOpen(true);
+      setChildModalOpen(type);
     }
   }
 
-  function handleCloseModal(type: "modal" | "child") {
+  function handleCloseModal(type: "modal" | typeof childModalOpen) {
     if (type === "modal") {
       setModalOpen(false);
     } else {
@@ -54,13 +57,24 @@ export const ImageModal: FC<ImageModalProps> = ({ editor }) => {
             $responsive={false}
           >
             Manage Images
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => handleOpenModal("child")}
-            >
-              <ImagesPlus />
-            </Button>
+            <StyledFlexWrapper $gap="0" $responsive={false}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => handleOpenModal("upload")}
+                title="Upload image"
+              >
+                <ImagesPlus />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => handleOpenModal("url")}
+                title="Add image link"
+              >
+                <Link />
+              </Button>
+            </StyledFlexWrapper>
           </StyledFlexWrapper>
         </ModalHeader>
         <ModalBody>
@@ -71,8 +85,18 @@ export const ImageModal: FC<ImageModalProps> = ({ editor }) => {
         </ModalFooter>
       </Modal>
       <ImageAddModal
-        open={childModalOpen}
-        onClose={() => handleCloseModal("child")}
+        open={childModalOpen === "upload"}
+        onClose={() => handleCloseModal("upload")}
+        editor={editor}
+      />
+      <ImageAddModal
+        open={childModalOpen === "upload"}
+        onClose={() => handleCloseModal("upload")}
+        editor={editor}
+      />
+      <ImageLinkModal
+        open={childModalOpen === "url"}
+        onClose={() => handleCloseModal("url")}
         editor={editor}
       />
     </>

@@ -19,4 +19,10 @@ export const AddImageSchema = z.object({
   ),
 });
 
+export const ImageUrlSchema = z.object({
+  alt: z.string().min(5).max(60),
+  link: z.string().url(),
+});
+
 export type AddImageSchemaType = z.infer<typeof AddImageSchema>;
+export type ImageUrlSchemaType = z.infer<typeof ImageUrlSchema>;

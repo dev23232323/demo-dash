@@ -44,7 +44,7 @@ const TiptapYoutubeModal: FC<TiptapYoutubeModalProps> = ({ editor }) => {
         <VideoIcon />
       </Button>
       <Modal onClose={() => setModalOpen(false)} open={isModalOpen}>
-        <ModalHeader>Add Youtube embed</ModalHeader>
+        <ModalHeader>Youtube embed</ModalHeader>
         <ModalBody>
           <TextField
             ref={inputRef}

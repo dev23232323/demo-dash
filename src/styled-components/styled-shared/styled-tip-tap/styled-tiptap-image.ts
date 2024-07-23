@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import styled from "styled-components";
 
 export const StyledImageWrapper = styled.div`
@@ -10,7 +9,12 @@ export const StyledImageWrapper = styled.div`
   margin: 10px auto;
 `;
 
-export const StyledCustomImage = styled(Image)`
+export const StyledCustomImage = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
   object-fit: contain;
 `;
 

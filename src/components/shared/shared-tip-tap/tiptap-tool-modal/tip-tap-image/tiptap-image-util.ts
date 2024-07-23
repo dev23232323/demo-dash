@@ -2,7 +2,7 @@ import { AxiosErrorResponse } from "@/@types/type-api/common.types";
 import {
   AddImageSchema,
   AddImageSchemaType,
-} from "@/utils/schemas/schema-add-image";
+} from "@/utils/schemas/schema-tiptap-image";
 import axiosInstance, { getBase64Image } from "@/utils/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError, AxiosResponse } from "axios";

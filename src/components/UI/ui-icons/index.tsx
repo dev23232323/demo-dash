@@ -5,7 +5,7 @@ import PencilLine from "./icons-svg/pencil-line";
 import UserRoundSearch from "./icons-svg/user-search-round";
 import Logo, { LogoSmall } from "./icons-svg/logo";
 import Mail from "./icons-svg/mails";
-import Chevron_Right from "./icons-svg/chevron-right";
+import Chevron_Right from "./icons-svg/chevron/chevron-right";
 import LoaderCircle from "./icons-svg/loader-circle";
 import ExternalLink from "./icons-svg/external-link";
 import Plus from "./icons-svg/plus";
@@ -28,7 +28,7 @@ import Menu from "./icons-svg/menu";
 import { ellipsis as Ellipsis } from "./icons-svg/ellipsis";
 import Lock from "./icons-svg/lock";
 import LoginIcon from "./icons-svg/login-in";
-import Chevron_Left from "./icons-svg/chevron-left";
+import Chevron_Left from "./icons-svg/chevron/chevron-left";
 import { Download } from "./icons-svg/download";
 import { Search } from "./icons-svg/search";
 import { ImagesPlus } from "./icons-svg/images-plus";
@@ -36,8 +36,10 @@ import { VideoIcon } from "./icons-svg/video";
 import { GlobeIcon } from "./icons-svg/globe";
 import { ChevronUpDown } from "./icons-svg/chevron-up-down";
 import { Trash } from "./icons-svg/trash";
+import Chevron_Down from "./icons-svg/chevron/chevron-down";
 
 export {
+  Chevron_Down,
   Trash,
   ChevronUpDown,
   GlobeIcon,

@@ -1,7 +1,14 @@
-import { FC, useEffect, useState } from "react";
-import { ChevronUpDown, Logo, UserIcon } from "@/components/UI/ui-icons";
+import { FC, useState } from "react";
+import {
+  Chevron_Down,
+  Chevron_Left,
+  Logo,
+  UserIcon,
+} from "@/components/UI/ui-icons";
 import {
   SideBarWrapper,
+  StyledExpandLinkItems,
+  StyledExpandLinkWrapper,
   StyledSidebarHeader,
   StyledSidebarLinks,
   UserIconWrapper,
@@ -33,13 +40,9 @@ export const Sidebar: FC<SidebarProps> = ({
     });
   }
 
-  // This will close the expanded links when ever the url changes
-  useEffect(() => {
+  function closeExpandedLinks() {
     setExpand(null);
-    return () => {
-      setExpand(null);
-    };
-  }, [pathname]);
+  }
 
   return (
     <SideBarWrapper $isClose={isClose}>
@@ -57,33 +60,36 @@ export const Sidebar: FC<SidebarProps> = ({
                 icon={Icon}
                 iconAlign="start"
                 isActive={link.path === path}
+                onClick={closeExpandedLinks}
               >
                 <span>{link.name}</span>
               </StyledSidebarLinks>
             </Link>
           ))}
 
-          <StyledSidebarLinks
-            icon={ChevronUpDown}
-            iconAlign="start"
-            isActive={expandLink === "work"}
-            onClick={() => toggleExpandLink("work")}
-          >
-            <span>Work Links</span>
-          </StyledSidebarLinks>
+          <StyledExpandLinkWrapper>
+            <StyledSidebarLinks
+              icon={expandLink === "work" ? Chevron_Down : Chevron_Left}
+              iconAlign="start"
+              isActive={expandLink === "work"}
+              onClick={() => toggleExpandLink("work")}
+            >
+              <span>Work Links</span>
+            </StyledSidebarLinks>
 
-          {expandLink === "work" &&
-            workLinks.map(({ icon: Icon, ...link }) => (
-              <Link href={link.path} key={link.name + link.path}>
-                <StyledSidebarLinks
-                  icon={Icon}
-                  iconAlign="start"
-                  isActive={link.path === pathname}
-                >
-                  <span>{link.name}</span>
-                </StyledSidebarLinks>
-              </Link>
-            ))}
+            {expandLink === "work" &&
+              workLinks.map(({ icon: Icon, ...link }) => (
+                <Link href={link.path} key={link.name + link.path}>
+                  <StyledExpandLinkItems
+                    icon={Icon}
+                    iconAlign="start"
+                    $isActive={link.path === pathname}
+                  >
+                    <span>{link.name}</span>
+                  </StyledExpandLinkItems>
+                </Link>
+              ))}
+          </StyledExpandLinkWrapper>
         </ul>
       </div>
       <UserIconWrapper>

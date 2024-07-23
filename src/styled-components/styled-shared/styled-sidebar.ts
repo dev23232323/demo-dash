@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/UI/ui-button";
 import { LogoSmall } from "@/components/UI/ui-icons";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface SideBarWrapperProps {
   $isClose?: boolean;
@@ -79,4 +79,37 @@ export const UserIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const StyledExpandLinkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+
+  border-radius: ${(props) => props.theme.style.borderRadius};
+  background-color: ${({ theme }) => theme.colors.primary[400]};
+`;
+
+interface StyledExpandLinksProps {
+  $isActive?: boolean;
+}
+
+export const StyledExpandLinkItems = styled(
+  StyledSidebarLinks
+)<StyledExpandLinksProps>`
+  background-color: transparent;
+  border-radius: 0;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary[700]};
+  }
+
+  ${({ $isActive }) => {
+    if ($isActive) {
+      return css`
+        background-color: ${({ theme }) => theme.colors.primary[700]};
+      `;
+    }
+  }}
 `;

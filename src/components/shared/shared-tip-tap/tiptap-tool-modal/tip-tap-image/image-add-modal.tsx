@@ -84,7 +84,7 @@ const ImageAddModal: FC<ImageAddModalProps> = ({ editor, ...props }) => {
       <ModalHeader>Add Image Details</ModalHeader>
       <ModalBody>
         <StyledImageWrapper>
-          {baseUrl && <StyledCustomImage src={baseUrl} fill alt="nothing" />}
+          {baseUrl && <StyledCustomImage src={baseUrl} alt="nothing" />}
         </StyledImageWrapper>
 
         <form>
@@ -113,6 +113,7 @@ const ImageAddModal: FC<ImageAddModalProps> = ({ editor, ...props }) => {
               type="button"
               loading={isLoading}
               onClick={handleSubmit(submitFunc)}
+              size="full"
             >
               Upload
             </Button>
@@ -131,6 +132,7 @@ const ImageAddModal: FC<ImageAddModalProps> = ({ editor, ...props }) => {
           type="button"
           onClick={!isLoading ? props.onClose : () => null}
           loading={isLoading}
+          size="full"
         >
           Close
         </Button>
