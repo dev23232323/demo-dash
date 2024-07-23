@@ -50,7 +50,7 @@ const CountryPage: FC<CountryPageProps> = () => {
           {...country}
           key={country.countryCode}
           deleteUrl={`/work/country/delete?id=${country.id}`}
-          updateUrl="ssss"
+          updateUrl={`/work/country/update?id=${country.id}`}
           refetch={refetch}
         />
       ))}

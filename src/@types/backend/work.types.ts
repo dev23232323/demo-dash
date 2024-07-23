@@ -17,6 +17,18 @@ export interface PartialCountry {
   overlayImageName: string;
 }
 
+export interface CountryType {
+  id: string;
+  name: string;
+  countryCode: string;
+  title: string;
+  description: string;
+  bannerImageUrl: string;
+  bannerImageName: "Screenshot 2024-05-24 142045.png";
+  overlayImageUrl: string;
+  overlayImageName: string;
+}
+
 export interface PartialWork {
   id: string;
   title: string;

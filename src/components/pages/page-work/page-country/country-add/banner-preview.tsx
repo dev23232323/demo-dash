@@ -129,7 +129,25 @@ export const FBB_BannerPreview: FC<FBB_BannerPreviewProps> = ({
   });
 
   useEffect(() => {
-    if (foreground) {
+    console.log("hehe", bannerImageUrl, overlayImageUrl);
+
+    setImages((prev) => {
+      return {
+        ...prev,
+        background: bannerImageUrl || "",
+        foreground: overlayImageUrl || "",
+      };
+    });
+  }, [bannerImageUrl, overlayImageUrl]);
+
+  console.log(
+    "images.background, images.foreground: ",
+    images.background,
+    images.foreground
+  );
+
+  useEffect(() => {
+    if (foreground && foreground.length > 0) {
       getBase64Image(foreground)
         .then((base64) =>
           setImages((prevImages) => ({
@@ -145,7 +163,7 @@ export const FBB_BannerPreview: FC<FBB_BannerPreviewProps> = ({
           }));
         });
     }
-    if (background) {
+    if (background && background.length > 0) {
       getBase64Image(background)
         .then((base64) =>
           setImages((prevImages) => ({
