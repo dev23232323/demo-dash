@@ -1,21 +1,16 @@
 import { FC, useState } from "react";
-import {
-  Chevron_Down,
-  Chevron_Left,
-  Logo,
-  UserIcon,
-} from "@/components/UI/ui-icons";
+import { Chevron_Down, Chevron_Left, Logo } from "@/components/UI/ui-icons";
 import {
   SideBarWrapper,
   StyledExpandLinkItems,
   StyledExpandLinkWrapper,
   StyledSidebarHeader,
   StyledSidebarLinks,
-  UserIconWrapper,
 } from "@/styled-components/styled-shared/styled-sidebar";
 import { SidebarLinksTypes } from "./SidebarLinks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import AuthModal from "./auth-modal";
 
 interface SidebarProps {
   links: SidebarLinksTypes[];
@@ -92,9 +87,7 @@ export const Sidebar: FC<SidebarProps> = ({
           </StyledExpandLinkWrapper>
         </ul>
       </div>
-      <UserIconWrapper>
-        <UserIcon />
-      </UserIconWrapper>
+      <AuthModal />
     </SideBarWrapper>
   );
 };

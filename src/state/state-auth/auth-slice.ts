@@ -34,7 +34,7 @@ const authSlice = createSlice({
 
 export const validateLogin = (token: string) => async (dispatch: any) => {
   const response: AxiosResponse<AuthSlice> = await axios.get(
-    "http://localhost:5000/dashboard/auth/validate-user",
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/dashboard/auth/validate-user`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

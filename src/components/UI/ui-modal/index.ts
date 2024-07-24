@@ -1,4 +1,4 @@
-import { Modal, ModalProps, PrivateModuleMarker } from "./modal";
+import { Modal, ModalProps } from "./modal";
 import {
   ModalBody,
   ModalHeader,
@@ -8,4 +8,4 @@ export default Modal;
 
 // Exporting other styled component
 export { ModalHeader, ModalBody, ModalFooter };
-export type { ModalProps, PrivateModuleMarker };
+export type { ModalProps };
