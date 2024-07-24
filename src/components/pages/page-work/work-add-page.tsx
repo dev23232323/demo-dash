@@ -28,6 +28,12 @@ const WorkAddPage: FC<WorkAddPageProps> = ({}) => {
           text: error.response.data.message,
           icon: "error",
         });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: error.message,
+          icon: "error",
+        });
       }
     },
     async onSuccess() {

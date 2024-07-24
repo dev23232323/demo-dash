@@ -28,6 +28,12 @@ const AddCountryPage: FC<AddCountryPageProps> = ({}) => {
           text: error.response.data.message,
           icon: "error",
         });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: error.message,
+          icon: "error",
+        });
       }
     },
     onSuccess() {
