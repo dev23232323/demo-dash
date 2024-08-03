@@ -79,10 +79,6 @@ export const UserDetails: FC<UserDetailsProps> = ({ userId }) => {
           ))}
         </StyledUserDetailInputWrapper>
       </StyledUserDetailsWrapper>
-      <StyledUserDetailsWrapper $gap="10px">
-        <StyledHeading>Payment History</StyledHeading>
-        Payment history of the user
-      </StyledUserDetailsWrapper>
     </StyledUserDetailsWrapper>
   );
 };

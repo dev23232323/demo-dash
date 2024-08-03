@@ -42,7 +42,7 @@ export const UsersAccordionList: FC<UsersAccordionListProps> = ({ users }) => {
 
 const AccordionHeader = ({ user }: { user: PartialUser }) => {
   return (
-    <StyledUserHeaderWrapper href={`/u/${user.id}`}>
+    <StyledUserHeaderWrapper href={`/u/?user=${user.id}`}>
       <StyledUserProfilePic
         src={`https://api.dicebear.com/8.x/initials/svg?seed=${user.firstName}`}
         alt={`${user.firstName} ${user.lastName}'s profile picture`}

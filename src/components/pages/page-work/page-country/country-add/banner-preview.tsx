@@ -6,8 +6,6 @@
 */
 
 "use client";
-import Button from "@/components/UI/ui-button";
-import { PencilLine, Trash } from "@/components/UI/ui-icons";
 import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -139,12 +137,6 @@ export const FBB_BannerPreview: FC<FBB_BannerPreviewProps> = ({
       };
     });
   }, [bannerImageUrl, overlayImageUrl]);
-
-  console.log(
-    "images.background, images.foreground: ",
-    images.background,
-    images.foreground
-  );
 
   useEffect(() => {
     if (foreground && foreground.length > 0) {

@@ -37,8 +37,12 @@ import { GlobeIcon } from "./icons-svg/globe";
 import { ChevronUpDown } from "./icons-svg/chevron-up-down";
 import { Trash } from "./icons-svg/trash";
 import Chevron_Down from "./icons-svg/chevron/chevron-down";
+import { LayoutGrid } from "./icons-svg/layout/layout-grid";
+import { LayoutList } from "./icons-svg/layout/layout-list";
 
 export {
+  LayoutGrid,
+  LayoutList,
   Chevron_Down,
   Trash,
   ChevronUpDown,

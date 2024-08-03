@@ -30,11 +30,7 @@ const TiptapImageGrid: FC<TiptapImageGridProps> = ({}) => {
           return (
             <StyledImageCard key={i}>
               <StyledImageWrapper>
-                <StyledCustomImage
-                  src={image.imageUrl}
-                  alt={image.imageAlt}
-                  fill
-                />
+                <StyledCustomImage src={image.imageUrl} alt={image.imageAlt} />
               </StyledImageWrapper>
               <Typography $size="sm" $color="black">
                 {image.imageAlt}

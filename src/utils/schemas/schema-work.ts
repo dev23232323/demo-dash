@@ -18,6 +18,7 @@ export const BaseWorkSchema = z.object({
         .replace(/\s+/g, "-")
         .replace(/[^a-z0-9-]/g, "")
     ),
+  country: z.any().optional(),
 });
 
 export const AddWorkSchema = BaseWorkSchema.extend({

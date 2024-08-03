@@ -28,7 +28,7 @@ import {
 } from "@/utils/schemas/schema-work";
 
 interface WorkAddPageProps {
-  onSubmit: (values: AddWorkSchemaType | UpdateWorkSchemaType) => void;
+  onSubmit: (values: any) => void;
   isLoading: boolean;
   defaultValues?: UpdateWorkSchemaType;
   formType: "update" | "create";

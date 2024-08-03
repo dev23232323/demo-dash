@@ -2,7 +2,7 @@
 import { FC, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import WorkForm from "./work-form";
-import { AddBlogSchemaType } from "@/utils/schemas/schema-blog";
+import { AddWorkSchemaType } from "@/utils/schemas/schema-work";
 import axiosInstance from "@/utils/utils";
 import { useMutation } from "react-query";
 import Swal from "sweetalert2";
@@ -74,7 +74,7 @@ const WorkUpdatePage: FC<WorkUpdatePageProps> = ({}) => {
     },
   });
 
-  const handleSubmit = (values: AddBlogSchemaType) => {
+  const handleSubmit = (values: AddWorkSchemaType) => {
     const file = values.file?.[0];
     const fd = new FormData();
 
@@ -82,7 +82,7 @@ const WorkUpdatePage: FC<WorkUpdatePageProps> = ({}) => {
       fd.append("file", file);
     }
 
-    (Object.keys(values) as (keyof AddBlogSchemaType)[]).forEach((key) => {
+    (Object.keys(values) as (keyof AddWorkSchemaType)[]).forEach((key) => {
       if (key !== "file") {
         fd.append(key, values[key] as string);
       }
